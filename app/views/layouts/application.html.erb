@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BookaholicsCap</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <% if account_signed_in? %>
+      <%= button_to "Log out", destroy_account_session_path, method: :delete %>
+    <% else %>
+      <%= button_to "Sign in", new_account_session_path, method: :get %>
+      <%= button_to "Sign up", new_account_registration_path, method: :get %>
+    <% end %> 
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>

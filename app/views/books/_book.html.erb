@@ -1,0 +1,17 @@
+<div>
+  <p>
+    <strong>Title:</strong>
+    <%= book.title %>
+  </p>
+
+  <p>
+    <strong>Read:</strong>
+    <%= book.read %>
+  </p>
+
+  <% if book.pending_approval == true %>
+    <%= button_to "Accept", accept_book_path(book), method: :patch, id: "accept-#{book.id}" %>
+    <%= button_to "Reject", book_path(book), method: :delete, id: "reject-#{book.id}" %>
+  <% end %>
+
+</div>

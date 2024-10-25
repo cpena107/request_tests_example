@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<%= link_to 'Show All', books_path %> -
+<%= link_to 'Show Read', books_path(read: true) %> -
+<%= link_to 'Show Unread', books_path(read: false) %>
+
+<h1><%= @filter %> Books</h1>
+
+<div id="books">
+  <% @books.each do |book| %>
+    <div  id="<%= dom_id book %>">
+      <%= render book %>
+      <div class="wrapper">
+        <div class="left">
+        <%= link_to "Show this book", book_path(book) %> |
+        </div>
+        <div class="center">
+        <%= link_to "Edit this book", edit_book_path(book) %>
+        </div>
+        <div class="right">
+        <%= button_to "Destroy this book", book_path(book), method: :delete, class: "myButton" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New Book", new_book_path %>
